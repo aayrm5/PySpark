@@ -1,7 +1,6 @@
 # Perform operations using Aggregate functions
 # Displaying multiple ways of calling columns
 
-from ast import alias
 from pyspark import SparkConf
 from pyspark.sql import SparkSession
 from sys import stdin
