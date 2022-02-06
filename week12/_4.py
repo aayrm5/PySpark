@@ -26,7 +26,8 @@ my_list = [
 
 col_names = ["order_id", "order_date", "customer_id", "status"]
 
-list_df = (spark.createDataFrame(my_list)
+list_df = (
+    spark.createDataFrame(my_list)
     .toDF(*col_names)
 )
 
