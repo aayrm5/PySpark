@@ -17,7 +17,7 @@ if __name__ == "__main__":
     # one input row will be giving one output row
     word_counts= words.map(lambda x: (x.lower()))
 
-    #Using `countByValue()` rather than `reduceByKey() to derive the count of each word in the file`
+    #Using `countByValue()` rather than `reduceByKey()` to derive the count of each word in the file
     final_count = word_counts.countByValue()
     
 
