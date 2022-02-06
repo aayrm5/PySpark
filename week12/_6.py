@@ -1,7 +1,6 @@
 # Creating UDF with `spark.udf.register()` functionality rather than in-built udf function.
 
 
-from ast import expr
 from pyspark import SparkConf
 from pyspark.sql import SparkSession
 from sys import stdin
