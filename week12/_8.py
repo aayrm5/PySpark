@@ -41,6 +41,20 @@ my_window = (
 df_new = (
     invoice_df
     .withColumn("running_total", F.sum("invoice_value").over(my_window))
+)
+
+df_new.show(20, truncate=False)
+
+# Column String Expression
+(
+    df_new
+    .selectExpr(
+        "count(*) as RowCount",
+        "sum(quantity) as TotalQuantity",
+        "avg(unit_price) as AvgPrice",
+        "count(Distinct(invoice_value)) as CountDistinct"
+    )
+
 ).show(20, truncate=False)
 
 #holds the job so that we can inspect the SparkUI at localhost:4040
