@@ -14,6 +14,7 @@ spark = (SparkSession
     .builder
     .appName("MultiDelimiter-RegexpParser")
     .config(conf=my_conf)
+    .enableHiveSupport()
     .getOrCreate()
 )
 
@@ -28,7 +29,7 @@ orders_new.printSchema()
 orders_new.show(20, truncate=False)
 
 parsed_df = (
-    orders_new
+    orders_new          
     .select(F.regexp_extract('value', my_regexp, 1).cast(IntegerType()).alias("order_id"),
             F.regexp_extract('value', my_regexp, 2).cast(DateType()).alias("order_date"),
             F.regexp_extract("value", my_regexp, 3).cast(IntegerType()).alias('customer_id'),
