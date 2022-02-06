@@ -3,7 +3,7 @@
 
 from pyspark import SparkContext
 from sys import stdin
-from pyspark.sql import functions as F
+# from pyspark.sql import functions as F
 
 sc = SparkContext("local[*]", "DataFrame-Top Movies")
 sc.setLogLevel("ERROR")
