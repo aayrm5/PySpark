@@ -1,4 +1,9 @@
-#In this file, we'll be using regex to decode a multi-delimiter `orders_new-201019-002101.csv` file
+#In this file, we'll be using regex to decode a multi-delimiter `orders_new-201019-002101.csv` file.
+
+# 1 2013-07-25	11599,CLOSED
+# 2 2013-07-25	256,PENDING_PAYMENT
+# 3 2013-07-25	12111,COMPLETE
+
 
 from pyspark import SparkConf
 from pyspark.sql import SparkSession
@@ -29,7 +34,7 @@ orders_new.printSchema()
 orders_new.show(20, truncate=False)
 
 parsed_df = (
-    orders_new          
+    orders_new              #'value' is the name of the column in orders_new dataframe.
     .select(F.regexp_extract('value', my_regexp, 1).cast(IntegerType()).alias("order_id"),
             F.regexp_extract('value', my_regexp, 2).cast(DateType()).alias("order_date"),
             F.regexp_extract("value", my_regexp, 3).cast(IntegerType()).alias('customer_id'),
